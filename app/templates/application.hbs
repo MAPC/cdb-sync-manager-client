@@ -1,0 +1,31 @@
+<div class="ui segment">
+  <h1>
+    Database Connections
+  </h1>
+  <table class="ui sortable celled table">
+    <thead>
+      <tr><th>Database</th>
+      <th>Table Name</th>
+      <th>Status</th>
+      <th>Created At</th>
+      <th>Updated At</th>
+      <th>Last Run</th>
+      <th>Will Run Again</th>
+      <th>Sync again?</th>
+    </tr></thead>
+    <tbody>
+{{#each model as |sync|}}
+    <tr>
+      <td>{{sync.database}}</td>
+      <td>{{sync.schema}}.{{sync.table}}</td>
+      <td>{{sync.state}}</td>
+      <td>{{sync.created_at}}</td>
+      <td>{{sync.updated_at}}</td>
+      <td>{{sync.ran_at}}</td>
+      <td>{{sync.run_at}}</td>
+      <td class="green inverted"></td>
+    </tr>
+{{/each}}
+   </tbody>
+  </table>
+</div>
