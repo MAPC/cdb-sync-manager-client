@@ -1,8 +1,8 @@
+{{outlet}}
 <div class="ui segment">
   <h1>
     Database Connections 
-    <button class="ui right floated green button" {{action 'newSync'}}>Add New Connection(s)</button>
-
+    {{link-to 'Add New Connection(s)' 'connection' class="ui right floated green button"}}
   </h1>
   <table class="ui sortable celled table">
     <thead>
@@ -36,26 +36,4 @@
       {{/each}}
    </tbody>
   </table>
-</div>
-
-<div class="ui modal">
-  <i class="close icon"></i>
-  <div class="header">
-    Add New Connection
-  </div>
-  <div class="content">
-    <div class="description">
-      <div class="ui header">Fill out below</div>
-      <p>Form Fields</p>
-    </div>
-  </div>
-  <div class="actions">
-    <div class="ui black deny button">
-      Cancel
-    </div>
-    <div class="ui positive right labeled icon button">
-      Create
-      <i class="checkmark icon"></i>
-    </div>
-  </div>
 </div>

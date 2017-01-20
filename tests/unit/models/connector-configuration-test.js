@@ -1,6 +1,6 @@
 import { moduleForModel, test } from 'ember-qunit';
 
-moduleForModel('connector', 'Unit | Model | connector', {
+moduleForModel('connector-configuration', 'Unit | Model | connector configuration', {
   // Specify the other units that are required for this test.
   needs: []
 });
