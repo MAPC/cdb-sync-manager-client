@@ -1,0 +1,15 @@
+.sync-state-created {
+  background-color: lightyellow;
+}
+
+.sync-state-success {
+  background-color: lightgreen;
+}
+
+.sync-state-queued {
+  background-color: olive;
+}
+
+.sync-state-syncing {
+  background-color: lightblue;
+}

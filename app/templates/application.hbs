@@ -1,31 +1,61 @@
 <div class="ui segment">
   <h1>
-    Database Connections
+    Database Connections 
+    <button class="ui right floated green button" {{action 'newSync'}}>Add New Connection(s)</button>
+
   </h1>
   <table class="ui sortable celled table">
     <thead>
-      <tr><th>Database</th>
-      <th>Table Name</th>
-      <th>Status</th>
-      <th>Created At</th>
-      <th>Updated At</th>
-      <th>Last Run</th>
-      <th>Will Run Again</th>
+      <tr><th {{action 'sortBy' 'database:desc'}}>Database</th>
+      <th {{action 'sortBy' 'table:desc'}}>Table Name</th>
+      <th {{action 'sortBy' 'state:desc'}}>State</th>
+      <th {{action 'sortBy' 'created_at:desc'}}>Created At</th>
+      <th {{action 'sortBy' 'updated_at:desc'}}>Updated At</th>
+      <th {{action 'sortBy' 'ran_at:desc'}}>Last Run</th>
+      <th {{action 'sortBy' 'run_at:desc'}}>Will Run Again</th>
       <th>Sync again?</th>
     </tr></thead>
     <tbody>
-{{#each model as |sync|}}
-    <tr>
-      <td>{{sync.database}}</td>
-      <td>{{sync.schema}}.{{sync.table}}</td>
-      <td>{{sync.state}}</td>
-      <td>{{sync.created_at}}</td>
-      <td>{{sync.updated_at}}</td>
-      <td>{{sync.ran_at}}</td>
-      <td>{{sync.run_at}}</td>
-      <td class="green inverted"></td>
-    </tr>
-{{/each}}
+      {{#each (sort-by currentSort model) as |sync|}}
+        <tr>
+          <td>{{sync.database}}</td>
+          <td>{{sync.schema}}.{{sync.table}}</td>
+          <td class="sync-state-{{sync.state}}">{{sync.state}}</td>
+          <td>{{moment-from-now sync.created_at}}</td>
+          <td>{{moment-from-now sync.updated_at}}</td>
+          <td>{{moment-from-now sync.ran_at}}</td>
+          <td>{{moment-from-now sync.run_at}}</td>
+          <td class="green inverted link">
+            {{#if (or (eq sync.state 'success') (eq sync.state 'created'))}}
+              <button class="ui green button" {{action 'syncNow' sync}}>Sync Now</button>
+            {{else}}
+              <div class="ui active centered inline loader"></div>
+            {{/if}}
+          </td>
+        </tr>
+      {{/each}}
    </tbody>
   </table>
+</div>
+
+<div class="ui modal">
+  <i class="close icon"></i>
+  <div class="header">
+    Add New Connection
+  </div>
+  <div class="content">
+    <div class="description">
+      <div class="ui header">Fill out below</div>
+      <p>Form Fields</p>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="ui black deny button">
+      Cancel
+    </div>
+    <div class="ui positive right labeled icon button">
+      Create
+      <i class="checkmark icon"></i>
+    </div>
+  </div>
 </div>
