@@ -1,6 +1,13 @@
+import Model from 'ember-pouch/model';
 import DS from 'ember-data';
 
-export default DS.Model.extend({
+const {
+  attr,
+  hasMany,
+  belongsTo
+} = DS;
+
+export default Model.extend({
   provider: DS.attr('string'),
   server: DS.attr('string'),
   database: DS.attr('string'),
@@ -8,5 +15,5 @@ export default DS.Model.extend({
   password: DS.attr('string'),
   table: DS.attr('string'),
   schema: DS.attr('string'),
-  interval: DS.attr('string'),
+  interval: DS.attr('string')
 });

@@ -1,0 +1,20 @@
+{{!-- <div class="ui active dimmer"> --}}
+  <div class="content">
+    <div class="center">
+      <div class="ui container">
+        <div class="ui segment">
+          <div class="header">
+            Add New Connection
+          </div>
+          <div class="ui header">Fill out below</div>
+          <p>Form Fields</p>
+          {{log model}}
+          {{log model.connectors}}
+          {{#each model.connectors as |connector|}}
+            <p>{{log connector}}</p>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+{{!-- </div> --}}
