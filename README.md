@@ -2,8 +2,10 @@
 
 CDB Sync Manager provides a GUI for creating import synchronizations between CartoDB and a given Postgres database. The API backend for this tool can be found here: https://github.com/MAPC/cdb-sync-manager
 
+## Sync from a list of database tables, pulled dynamically from a specified database
 ![Sync from a list of database tables](https://github.com/MAPC/cdb-sync-manager-client/blob/master/M73d4cf9QA.gif?raw=true "Logo Title Text 1")
 
+## Manually sync or delete existing syncs
 ![Manually Sync or Delete existing syncs](https://github.com/MAPC/cdb-sync-manager-client/blob/master/ka3b0vt1He.gif?raw=true)
 
 This README outlines the details of collaborating on this Ember application.
