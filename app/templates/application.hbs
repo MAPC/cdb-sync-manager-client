@@ -14,6 +14,7 @@
       <th {{action 'sortBy' 'ran_at:desc'}}>Last Run</th>
       <th {{action 'sortBy' 'run_at:desc'}}>Will Run Again</th>
       <th>Sync again?</th>
+      <th>Delete?</th>
     </tr></thead>
     <tbody>
       {{#each (sort-by currentSort model) as |sync|}}
@@ -31,6 +32,9 @@
             {{else}}
               <div class="ui active centered inline loader"></div>
             {{/if}}
+          </td>
+          <td class="red inverted link">
+            <button class="ui red button" {{action 'deleteNow' sync}}>Delete Now</button>
           </td>
         </tr>
       {{/each}}

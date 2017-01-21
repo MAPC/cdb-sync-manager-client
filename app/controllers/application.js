@@ -28,6 +28,9 @@ export default Ember.Controller.extend({
     },
     newSync() {
       $('.ui.modal').modal('show');
+    },
+    deleteNow(sync) {
+      sync.destroyRecord();
     }
   }
 });
