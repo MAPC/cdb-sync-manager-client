@@ -21,5 +21,6 @@ export default DS.Model.extend({
   "updated_at": DS.attr('date'),
   "ran_at": DS.attr('date'),
   "run_at": DS.attr('date'),
+  connection_id: DS.attr('number'),
   sync_now: memberAction({ path: 'sync_now', type: 'patch' }),
 });

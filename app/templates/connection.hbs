@@ -1,8 +1,61 @@
-<div class="custom-dimmer">
-  <div class="ui container" style="color: black;">
-    <div class="ui segment" style="color: black;">
-      <div class="ui top attached label">Create New Connection</div>
-      <p>Test</p>
+<div class="ui active page dimmer">
+  <div class="content">
+    <div class="center">
+      <div class="ui container" style="color: black;">
+        <h2 class="ui top attached header">
+          Connect New Table
+        </h2>
+        <div class="ui attached center aligned segment" style="color: black;">
+          <div class="ui ordered steps">
+            <div class="step {{if database_id 'completed'}}">
+              <div class="content">
+                {{#ui-dropdown class="selection" selected=database_id onChange=(action (mut database_id)) as |execute mapper|}}
+                  <div class="default text">Select Database</div>
+                  <i class="dropdown icon"></i>
+                  <div class="menu">
+                    {{#each model as |connection|}}
+                      <div class="item" data-value="{{map-value mapper connection.id}}">
+                        {{connection.database}}
+                      </div>
+                    {{/each}}
+                  </div>
+                {{/ui-dropdown}}
+              </div>
+            </div>
+            <div class="step {{if entered_schema 'completed'}}">
+              <div class="content">
+                <div class="ui input">
+                  {{input type="text" value=entered_schema placeholder="Enter Schema"}}
+                </div>
+              </div>
+            </div>
+            <div class="step {{if selected_table 'completed'}}">
+              <div class="content">
+                <div class="ui input">
+                  {{#ui-dropdown class="search selection" allowAdditions=true selected=selected_table onChange=(action (mut selected_table)) as |execute mapper|}}
+                    <div class="default text">Select Table</div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                      {{#each currentConnection.get_table_names as |connection|}}
+                        <div class="item" data-value="{{map-value mapper connection}}">
+                          {{connection}}
+                        </div>
+                      {{/each}}
+                    </div>
+                  {{/ui-dropdown}}
+                </div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="content">
+                <div class="ui input">
+                  <button class="ui green button {{unless isCompleted 'disabled'}}" onclick={{if isCompleted (action 'createSync')}}>Sync Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

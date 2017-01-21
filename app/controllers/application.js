@@ -14,7 +14,7 @@ export default Ember.Controller.extend({
         store.push(store.normalize('synchronization', response.data));
         let state = response.data.attributes.state;
 
-        if (state == "syncing" || state == "queued") {
+        if (state == "syncing" || state == "queued" || state == "created") {
           setTimeout(() => {
             this.send('syncNow',sync);
           },1000)
