@@ -36,7 +36,8 @@ export default Ember.Controller.extend({
 
       record.save().then((sync) => {
         this.get('applicationController').send('syncNow', sync);
-        this.setProperties({'database_id':null, 'selected_table':null, 'entered_schema':null})
+        this.setProperties({'database_id':null, 'selected_table':null, 'entered_schema':null});
+        this.transitionToRoute('application');
       });
     }
   }
