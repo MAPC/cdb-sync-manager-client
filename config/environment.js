@@ -44,7 +44,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.host = 'https://cdb-sync-manager-api.herokuapp.com'
+    ENV.host = '/'
   }
 
   return ENV;
