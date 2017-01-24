@@ -1,15 +1,15 @@
 <div class="ui active page dimmer">
   <div class="content">
     <div class="center">
-      <div class="ui container" style="color: black;">
+      <div class="ui container connector-form" style="color: black;">
         <h2 class="ui top attached header">
           Connect New Table
         </h2>
         <div class="ui attached center aligned segment" style="color: black;">
-          <div class="ui ordered steps">
+          <div class="ui fluid vertical ordered steps">
             <div class="step {{if database_id 'completed'}}">
               <div class="content">
-                {{#ui-dropdown class="selection" selected=database_id onChange=(action (mut database_id)) as |execute mapper|}}
+                {{#ui-dropdown class="selection fluid" selected=database_id onChange=(action (mut database_id)) as |execute mapper|}}
                   <div class="default text">Select Database</div>
                   <i class="dropdown icon"></i>
                   <div class="menu">
@@ -24,15 +24,15 @@
             </div>
             <div class="step {{if entered_schema 'completed'}}">
               <div class="content">
-                <div class="ui input">
+                <div class="ui fluid input">
                   {{input type="text" value=entered_schema placeholder="Enter Schema"}}
                 </div>
               </div>
             </div>
             <div class="step {{if selected_table 'completed'}}">
               <div class="content">
-                <div class="ui input">
-                  {{#ui-dropdown class="search selection" allowAdditions=true selected=selected_table onChange=(action (mut selected_table)) as |execute mapper|}}
+                <div class="ui input fluid">
+                  {{#ui-dropdown class="search selection fluid" allowAdditions=true selected=selected_table onChange=(action (mut selected_table)) as |execute mapper|}}
                     <div class="default text">Select Table</div>
                     <i class="dropdown icon"></i>
                     <div class="menu">
@@ -43,6 +43,15 @@
                       {{/each}}
                     </div>
                   {{/ui-dropdown}}
+                </div>
+              </div>
+            </div>
+            <div class="step {{if sql_query 'completed'}}">
+              <div class="content">
+                <div class="ui form">
+                  <div class="field">
+                    {{textarea value=sql_query placeholder="Enter SQL Query (optional)"}}
+                  </div>
                 </div>
               </div>
             </div>

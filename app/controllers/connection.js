@@ -23,8 +23,13 @@ export default Ember.Controller.extend({
       let service_item_id = 
         { 
           "table": this.get('selected_table'), 
-          "schema": this.get('entered_schema')
+          "schema": this.get('entered_schema'),
         };
+
+      let sql_query = this.get('sql_query');
+      if(sql_query) {
+        service_item_id['sql_query'] = sql_query;
+      }
 
       let stringified_json = JSON.stringify(service_item_id);
 
@@ -33,6 +38,8 @@ export default Ember.Controller.extend({
         connection_id: this.get('currentConnection.id'),
         state: 'queued'
       });
+
+
 
       record.save().then((sync) => {
         this.get('applicationController').send('syncNow', sync);

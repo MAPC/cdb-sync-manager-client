@@ -24,3 +24,11 @@
   z-index: 1;
   top: 0;
 }
+
+.content {
+  width: 90%;
+}
+
+.connector-form {
+  max-width: 30%;
+}
